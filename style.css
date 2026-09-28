@@ -1,0 +1,310 @@
+:root {
+  --green: #4c9b45;
+  --dark-green: #24502c;
+  --cream: #f6edcf;
+  --brown: #65452c;
+  --red: #b73535;
+  --blue: #437db5;
+  --purple: #8457a5;
+  --orange: #d17d35;
+  --neutral: #222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, #dce8a3, #91ae5b);
+  color: #241d16;
+  font-family: Georgia, serif;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 16px;
+  background: var(--dark-green);
+  color: white;
+  cursor: pointer;
+  margin: 5px 0;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.15);
+}
+
+button:disabled {
+  background: #888;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button.secondary {
+  background: #776d5e;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ad9c78;
+  border-radius: 8px;
+  margin: 6px 0;
+  background: #fffdf3;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 22px;
+  background: rgba(36, 80, 44, 0.95);
+  color: white;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+#connectionStatus {
+  font-size: 13px;
+}
+
+.screen {
+  padding: 30px 15px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card {
+  max-width: 480px;
+  margin: 20px auto;
+  background: rgba(255, 250, 226, 0.96);
+  border: 3px solid #684b2a;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px #0004;
+  text-align: center;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--dark-green);
+  font-size: 32px;
+}
+
+.join-box {
+  display: flex;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.join-box input {
+  min-width: 0;
+}
+
+.message {
+  min-height: 22px;
+  color: var(--red);
+}
+
+#lobbyPlayers {
+  text-align: left;
+  padding-left: 25px;
+}
+
+#lobbyPlayers li {
+  margin: 8px 0;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(300px, 850px);
+  gap: 24px;
+  max-width: 1250px;
+  margin: auto;
+  align-items: start;
+}
+
+.side-panel {
+  background: rgba(255, 250, 226, 0.95);
+  border: 3px solid #684b2a;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 15px #0004;
+}
+
+.side-panel h2,
+.side-panel h3 {
+  color: var(--dark-green);
+}
+
+.player-card {
+  padding: 9px;
+  border-radius: 8px;
+  margin: 6px 0;
+  background: #e6d9b5;
+  border-left: 8px solid #555;
+}
+
+.player-card.active {
+  outline: 3px solid #edc344;
+  background: #fff3b3;
+}
+
+.player-card strong {
+  display: block;
+}
+
+.game-info {
+  margin-top: 18px;
+  border-top: 1px solid #aa9872;
+  padding-top: 10px;
+}
+
+.actions {
+  margin-top: 15px;
+  border-top: 1px solid #aa9872;
+  padding-top: 10px;
+}
+
+.actions button {
+  width: 100%;
+}
+
+.board-section {
+  width: 100%;
+}
+
+.board {
+  position: relative;
+  width: min(82vw, 800px);
+  aspect-ratio: 1;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #0005;
+  background: #9eae62;
+}
+
+.board-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+#stackLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.stack {
+  position: absolute;
+  width: 52px;
+  min-height: 52px;
+  border: 3px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 4px 7px #0008;
+  transition: 0.2s;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.stack:hover {
+  transform: translate(-50%, -50%) scale(1.13);
+  z-index: 20;
+}
+
+.stack.selected {
+  outline: 5px solid #ffe457;
+}
+
+.stack-height {
+  font-size: 20px;
+}
+
+.stack-owner {
+  font-size: 9px;
+  max-width: 45px;
+  overflow: hidden;
+}
+
+.color-green {
+  background: #31964d;
+}
+
+.color-blue {
+  background: #3477ba;
+}
+
+.color-purple {
+  background: #8552a4;
+}
+
+.color-orange {
+  background: #d57925;
+}
+
+.color-ghost {
+  background: #af4a75;
+}
+
+.color-neutral {
+  background: #222;
+}
+
+.instructions {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px;
+  background: #e8dcba;
+  margin: 5px;
+  border-radius: 6px;
+}
+
+@media (max-width: 850px) {
+  .game-layout {
+    display: block;
+  }
+
+  .side-panel {
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  .board {
+    width: 94vw;
+  }
+
+  .stack {
+    width: 42px;
+    min-height: 42px;
+  }
+}
