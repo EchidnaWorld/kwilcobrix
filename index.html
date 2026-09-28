@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kwilcobrix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>Kwilcobrix</h1>
+  <span id="connectionStatus">Hors ligne</span>
+</header>
+
+<main>
+
+  <section id="homeScreen" class="screen">
+    <div class="card">
+      <h2>Jeu des druides</h2>
+      <p>
+        Place tes pions, renforce tes tas et utilise les subterfuges
+        pour obtenir le plus de points.
+      </p>
+
+      <input id="playerNameInput" placeholder="Ton nom" maxlength="20">
+
+      <button id="createGameButton">
+        Créer une partie
+      </button>
+
+      <div class="join-box">
+        <input id="gameCodeInput" placeholder="Code de partie" maxlength="6">
+        <button id="joinGameButton">Rejoindre</button>
+      </div>
+
+      <p id="homeMessage" class="message"></p>
+    </div>
+  </section>
+
+  <section id="lobbyScreen" class="screen hidden">
+    <div class="card">
+      <h2>Salon de partie</h2>
+
+      <p>
+        Code à partager :
+        <strong id="gameCodeLabel"></strong>
+      </p>
+
+      <button id="copyCodeButton">Copier le code</button>
+
+      <h3>Joueurs</h3>
+      <ul id="lobbyPlayers"></ul>
+
+      <button id="startGameButton">
+        Démarrer la partie
+      </button>
+
+      <p id="lobbyMessage" class="message"></p>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="screen hidden">
+
+    <div class="game-layout">
+
+      <aside class="side-panel">
+        <h2>Joueurs</h2>
+        <div id="playersPanel"></div>
+
+        <div class="game-info">
+          <p>
+            Tour de :
+            <strong id="currentPlayerLabel"></strong>
+          </p>
+
+          <p>
+            Pions neutres :
+            <strong id="neutralCountLabel"></strong>
+          </p>
+
+          <p id="differenceLabel"></p>
+        </div>
+
+        <div id="actionsPanel" class="actions">
+          <h3>Actions</h3>
+
+          <button id="sacrificeButton">
+            Faire un sacrifice
+          </button>
+
+          <button id="swapButton">
+            Échanger deux tas
+          </button>
+
+          <button id="neutralButton">
+            Placer deux pions neutres
+          </button>
+
+          <button id="cancelActionButton" class="secondary">
+            Annuler l'action
+          </button>
+        </div>
+      </aside>
+
+      <section class="board-section">
+        <div id="board" class="board">
+          <img
+            class="board-image"
+            src="assets/board.png"
+            alt="Cercle druidique"
+          >
+
+          <div id="stackLayer"></div>
+        </div>
+
+        <div class="instructions">
+          <p id="turnInstruction">
+            Clique sur un emplacement pour jouer.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <section id="endScreen" class="screen hidden">
+    <div class="card">
+      <h2>Fin de la partie</h2>
+      <h3 id="winnerLabel"></h3>
+      <div id="finalScores"></div>
+      <button id="restartButton">Retour à l'accueil</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
